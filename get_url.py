@@ -1,5 +1,3 @@
-import re
-
 import requests
 import bs4
 
@@ -10,10 +8,10 @@ def get_url():
     s = bs4.BeautifulSoup(data.text, 'html.parser')
     for link in s.findAll('a'):
         if link.has_attr('href'):
-            link = (str(link)[str(link).find("=\"") + 2:str(link).find("\">")])
-            if link.find("href=\"") == 10:
+            if str(link).find("href=\"") == 20:
                 continue
             else:
+                link = (str(link)[str(link).find("=\"") + 2:str(link).find("\">")])
                 urls.append("https://cdiak.archives.gov.ua/baza_geog_pok/" + link)
     return urls
 
