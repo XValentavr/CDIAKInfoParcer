@@ -14,9 +14,3 @@ def get_url():
                 link = (str(link)[str(link).find("=\"") + 2:str(link).find("\">")])
                 urls.append("https://cdiak.archives.gov.ua/baza_geog_pok/" + link)
     return urls
-
-
-def print_urls(url):
-    for i in range(len(url)):
-        print(url[i])
-    return None

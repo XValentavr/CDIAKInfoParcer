@@ -10,8 +10,9 @@ def xml_parsing():
         response = requests.get(xml_url)
         response.encoding = 'utf-8'
         soup = BeautifulSoup(response.text, features='lxml')
-
         village = soup.find_all('ukrnas')
+
+        second_village = soup.find_all('Dokyment')
 
         province = soup.find_all("gybernia")
 
@@ -27,6 +28,9 @@ def xml_parsing():
 
         confession = soup.find_all("spovid")
 
+        archive = 'ЦДІАК'
+
+        print(archive)
         fond_list = []
         case_list = []
         confession_list = []
@@ -39,7 +43,12 @@ def xml_parsing():
             a, b = (str(village)[str(village).find(","):]), (str(village)[:str(village).find(",")])
             village = a + " " + b
             village = village.replace(', ', '')
+            village = village.replace(r',', '')
             print(village)
+
+        for second_village in second_village:
+            second_village = second_village.text
+            print("second= " + second_village)
 
         for province in province:
             province = province.text
@@ -64,9 +73,6 @@ def xml_parsing():
         for case in case:
             case = case.text
             case_list.append(case)
-        print(case_list[0])
-        print(fond_list[0])
-        print(confession_list[0])
 
 
 if __name__ == '__main__':
