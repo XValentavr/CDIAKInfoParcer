@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 def xml_parsing():
     xml_url = get_url()
     for xml_url in xml_url:
-        print(xml_url)
         response = requests.get(xml_url)
         response.encoding = 'utf-8'
         soup = BeautifulSoup(response.text, features='lxml')
@@ -30,7 +29,6 @@ def xml_parsing():
 
         archive = 'ЦДІАК'
 
-        print(archive)
         fond_list = []
         case_list = []
         confession_list = []
@@ -43,24 +41,18 @@ def xml_parsing():
             a, b = (str(village)[str(village).find(","):]), (str(village)[:str(village).find(",")])
             village = a + " " + b
             village = village.replace(', ', '')
-            village = village.replace(r',', '')
-            print(village)
 
         for second_village in second_village:
             second_village = second_village.text
-            print("second= " + second_village)
 
         for province in province:
             province = province.text
-            print(province + ' губернія')
 
         for county in county:
             county = county.text
-            print(county)
 
         for church in church:
             church = church.text
-            print(church)
 
         for fond in fond:
             fond = fond.text

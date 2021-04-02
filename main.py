@@ -1,4 +1,4 @@
-from get_url import print_urls, get_url
+from Parcing import xml_parsing
 
 if __name__ == '__main__':
-    print_urls(get_url())
+    print(xml_parsing())
