@@ -7,7 +7,7 @@ def connect():
         conn = mysql.connector.connect(host='localhost',
                                        database='genealogyboutique',
                                        user='root',
-                                       password='Djksycrbq')
+                                       password='root')
 
     except Error as e:
         print('Error:', e)

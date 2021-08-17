@@ -4,7 +4,7 @@ import bs4
 
 def get_url():
     urls = []
-    data = requests.request('get', 'https://cdiak.archives.gov.ua/baza_geog_pok/church.php/')
+    data = requests.request('get', 'https://cdiak.archives.gov.ua/baza_geog_pok/decanats.php')
     s = bs4.BeautifulSoup(data.text, 'html.parser')
     for link in s.findAll('a'):
         if link.has_attr('href'):
@@ -13,4 +13,5 @@ def get_url():
             else:
                 link = (str(link)[str(link).find("=\"") + 2:str(link).find("\">")])
                 urls.append("https://cdiak.archives.gov.ua/baza_geog_pok/" + link)
-    return urls
+    unique = set(urls)
+    return unique
