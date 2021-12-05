@@ -1,3 +1,8 @@
+"""
+Start the project
+"""
+
+# local imports
 from Parcing import xml_parsing
 
 if __name__ == '__main__':

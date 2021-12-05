@@ -1,17 +1,33 @@
-from get_url import get_url
+"""
+This big module parsing data from get xml page using beautiful soup
+"""
+
+# project imports
 import requests
 from bs4 import BeautifulSoup
-from Connect import connect
-from mysql.connector import Error
 from random import randint
 
+# local imports
+from Connect import connect
+from mysql.connector import Error
+from get_url import get_url
 
-def listToString(s):
+
+def listToString(s: list) -> str:
+    """
+    convert list to string format
+    :param s: list
+    :return: str
+    """
     str1 = ""
-    return (str1.join(s))
+    return str1.join(s)
 
 
 def xml_parsing():
+    """
+    parse xml page, gets import using beautiful soup and insert to database
+    :return:
+    """
     xml_url = get_url()
     conn = connect()
     for xml_url in xml_url:
